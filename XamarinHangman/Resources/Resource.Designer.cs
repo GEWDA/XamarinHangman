@@ -61,7 +61,7 @@ namespace XamarinHangman
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int textView1 = 2131034112;
+			public const int textViewTitle = 2131034112;
 			
 			static Id()
 			{

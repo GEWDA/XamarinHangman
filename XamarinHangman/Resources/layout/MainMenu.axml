@@ -8,8 +8,10 @@
     android:minHeight="25px">
     <TextView
         android:text="Hangman"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="100dp"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/textViewTitle"
+        android:gravity="center" />
 </LinearLayout>
