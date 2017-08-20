@@ -5,6 +5,7 @@ using System;
 using Android.Graphics;
 using Android.Content;
 using Java.IO;
+using Android.Views;
 
 namespace XamarinHangman
 {
@@ -12,7 +13,10 @@ namespace XamarinHangman
     public class MainActivity : Activity
     {
         private TextView mainTitle;
-        private Button btnPlay;
+        private View btnPlay;
+        private View btnScores;
+        private View btnSettings;
+        private View btnPlayers;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -29,6 +33,10 @@ namespace XamarinHangman
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;
+            btnPlay = FindViewById(Resource.Id.imageButtonPlay);
+            btnScores = FindViewById(Resource.Id.imageButtonScores);
+            btnSettings = FindViewById(Resource.Id.imageButtonSettings);
+            btnPlayers = FindViewById(Resource.Id.imageButtonPlayers);
         }
     }
 }
