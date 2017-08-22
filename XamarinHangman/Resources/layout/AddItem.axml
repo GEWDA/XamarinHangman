@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/txtItemTitle"
+        android:hint="Enter Title"
+        android:layout_weight="0.5"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical" />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/txtItemDescription"
+        android:layout_weight="0.1"
+        android:layout_gravity="top"
+        android:hint="Enter Details"
+        android:gravity="fill_horizontal"
+        android:layout_marginTop="5dp" />
+    <Button
+        android:text="Add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd" />
+</LinearLayout>

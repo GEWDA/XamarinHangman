@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using XamarinHangman;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -18,7 +18,7 @@ namespace ToDoList
     {
 
         int ListId;
-        string Title;
+        string ItemTitle;
         string Details;
 
         TextView txtTitle;
@@ -45,9 +45,9 @@ namespace ToDoList
 
             ListId = Intent.GetIntExtra("ListID", 0);
             Details = Intent.GetStringExtra("Details");
-            Title = Intent.GetStringExtra("Title");
+            ItemTitle = Intent.GetStringExtra("Title");
 
-            txtTitle.Text = Title;
+            txtTitle.Text = ItemTitle;
             txtDetails.Text = Details;
 
             DB = new DatabaseManager();

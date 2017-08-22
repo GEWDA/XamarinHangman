@@ -51,7 +51,7 @@ namespace ToDoList
 
                     SQLiteConnection db = new SQLiteConnection(
                             Path.Combine(Environment.ExternalStorageDirectory.ToString(),
-                                "ToDoList.sqlite"))) ;
+                                "ToDoList.sqlite")))
                 {
                     var AddThis = new tblToDoList() { Title = title, Details = details };
                     db.Insert(AddThis);

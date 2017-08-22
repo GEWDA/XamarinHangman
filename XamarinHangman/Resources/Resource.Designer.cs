@@ -91,22 +91,55 @@ namespace XamarinHangman
 		{
 			
 			// aapt resource value: 0x7f050002
-			public const int imageButtonPlay = 2131034114;
+			public const int btnAdd = 2131034114;
+			
+			// aapt resource value: 0x7f05000a
+			public const int btnDelete = 2131034122;
+			
+			// aapt resource value: 0x7f050009
+			public const int btnEdit = 2131034121;
+			
+			// aapt resource value: 0x7f05000d
+			public const int imageButtonPlay = 2131034125;
+			
+			// aapt resource value: 0x7f050010
+			public const int imageButtonPlayers = 2131034128;
+			
+			// aapt resource value: 0x7f05000e
+			public const int imageButtonScores = 2131034126;
+			
+			// aapt resource value: 0x7f05000f
+			public const int imageButtonSettings = 2131034127;
 			
 			// aapt resource value: 0x7f050005
-			public const int imageButtonPlayers = 2131034117;
-			
-			// aapt resource value: 0x7f050003
-			public const int imageButtonScores = 2131034115;
+			public const int lbldescription = 2131034117;
 			
 			// aapt resource value: 0x7f050004
-			public const int imageButtonSettings = 2131034116;
+			public const int lbltitle = 2131034116;
+			
+			// aapt resource value: 0x7f050008
+			public const int linearLayout1 = 2131034120;
+			
+			// aapt resource value: 0x7f05000b
+			public const int listView1 = 2131034123;
+			
+			// aapt resource value: 0x7f050003
+			public const int sqlite_id = 2131034115;
+			
+			// aapt resource value: 0x7f05000c
+			public const int textViewTitle = 2131034124;
+			
+			// aapt resource value: 0x7f050007
+			public const int txtEditDescription = 2131034119;
+			
+			// aapt resource value: 0x7f050006
+			public const int txtEditTitle = 2131034118;
 			
 			// aapt resource value: 0x7f050001
-			public const int linearLayout1 = 2131034113;
+			public const int txtItemDescription = 2131034113;
 			
 			// aapt resource value: 0x7f050000
-			public const int textViewTitle = 2131034112;
+			public const int txtItemTitle = 2131034112;
 			
 			static Id()
 			{
@@ -122,7 +155,19 @@ namespace XamarinHangman
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int MainMenu = 2130903040;
+			public const int AddItem = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int CustomRow = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int EditItem = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int MainMenu = 2130903044;
 			
 			static Layout()
 			{
