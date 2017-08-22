@@ -13,10 +13,11 @@ namespace XamarinHangman
     public class MainActivity : Activity
     {
         private TextView mainTitle;
-        private View btnPlay;
-        private View btnScores;
-        private View btnSettings;
-        private View btnPlayers;
+        private ImageButton btnPlay;
+        private ImageButton btnScores;
+        private ImageButton btnSettings;
+        private ImageButton btnPlayers;
+        //public User CurrentPlayer;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -28,15 +29,20 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
-            //InputStream input =  Assets.Open("fonts/spyware_nbp.tff");
-            
+
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;
-            btnPlay = FindViewById(Resource.Id.imageButtonPlay);
-            btnScores = FindViewById(Resource.Id.imageButtonScores);
-            btnSettings = FindViewById(Resource.Id.imageButtonSettings);
-            btnPlayers = FindViewById(Resource.Id.imageButtonPlayers);
+            btnPlay = FindViewById<ImageButton>(Resource.Id.imageButtonPlay);
+            btnPlay.Click += BtnPlay_Click;
+            btnScores = FindViewById<ImageButton>(Resource.Id.imageButtonScores);
+            btnSettings = FindViewById<ImageButton>(Resource.Id.imageButtonSettings);
+            btnPlayers = FindViewById<ImageButton>(Resource.Id.imageButtonPlayers);
+        }
+
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
