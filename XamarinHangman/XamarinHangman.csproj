@@ -65,6 +65,7 @@
     <Compile Include="DbThings\EditItem.cs" />
     <Compile Include="DbThings\MainActivity.cs" />
     <Compile Include="DbThings\tblToDoList.cs" />
+    <Compile Include="GameActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,9 @@
     <AndroidResource Include="Resources\layout\CustomRow.axml" />
     <AndroidResource Include="Resources\layout\EditItem.axml" />
     <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\GameScreen.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainMenu.axml">

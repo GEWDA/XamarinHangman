@@ -99,17 +99,107 @@ namespace XamarinHangman
 			// aapt resource value: 0x7f050009
 			public const int btnEdit = 2131034121;
 			
-			// aapt resource value: 0x7f05000d
-			public const int imageButtonPlay = 2131034125;
+			// aapt resource value: 0x7f05000f
+			public const int button1 = 2131034127;
+			
+			// aapt resource value: 0x7f050018
+			public const int button10 = 2131034136;
+			
+			// aapt resource value: 0x7f05001a
+			public const int button11 = 2131034138;
+			
+			// aapt resource value: 0x7f05001b
+			public const int button12 = 2131034139;
+			
+			// aapt resource value: 0x7f05001c
+			public const int button13 = 2131034140;
+			
+			// aapt resource value: 0x7f05001d
+			public const int button14 = 2131034141;
+			
+			// aapt resource value: 0x7f05001e
+			public const int button15 = 2131034142;
+			
+			// aapt resource value: 0x7f05001f
+			public const int button16 = 2131034143;
+			
+			// aapt resource value: 0x7f050020
+			public const int button17 = 2131034144;
+			
+			// aapt resource value: 0x7f050021
+			public const int button18 = 2131034145;
+			
+			// aapt resource value: 0x7f050022
+			public const int button19 = 2131034146;
 			
 			// aapt resource value: 0x7f050010
-			public const int imageButtonPlayers = 2131034128;
+			public const int button2 = 2131034128;
+			
+			// aapt resource value: 0x7f050024
+			public const int button20 = 2131034148;
+			
+			// aapt resource value: 0x7f050025
+			public const int button21 = 2131034149;
+			
+			// aapt resource value: 0x7f050026
+			public const int button22 = 2131034150;
+			
+			// aapt resource value: 0x7f050027
+			public const int button23 = 2131034151;
+			
+			// aapt resource value: 0x7f050028
+			public const int button24 = 2131034152;
+			
+			// aapt resource value: 0x7f050029
+			public const int button25 = 2131034137;
+			
+			// aapt resource value: 0x7f05002a
+			public const int button26 = 2131034147;
+			
+			// aapt resource value: 0x7f050011
+			public const int button3 = 2131034129;
+			
+			// aapt resource value: 0x7f050012
+			public const int button4 = 2131034130;
+			
+			// aapt resource value: 0x7f050013
+			public const int button5 = 2131034131;
+			
+			// aapt resource value: 0x7f050014
+			public const int button6 = 2131034132;
+			
+			// aapt resource value: 0x7f050015
+			public const int button7 = 2131034133;
+			
+			// aapt resource value: 0x7f050016
+			public const int button8 = 2131034134;
+			
+			// aapt resource value: 0x7f050017
+			public const int button9 = 2131034135;
+			
+			// aapt resource value: 0x7f05002d
+			public const int imageButtonPlay = 2131034157;
+			
+			// aapt resource value: 0x7f050030
+			public const int imageButtonPlayers = 2131034160;
+			
+			// aapt resource value: 0x7f05002e
+			public const int imageButtonScores = 2131034158;
+			
+			// aapt resource value: 0x7f05002f
+			public const int imageButtonSettings = 2131034159;
+			
+			// aapt resource value: 0x7f05000c
+			public const int imageView1 = 2131034124;
 			
 			// aapt resource value: 0x7f05000e
-			public const int imageButtonScores = 2131034126;
+			public const int keyboardRow1 = 2131034126;
 			
-			// aapt resource value: 0x7f05000f
-			public const int imageButtonSettings = 2131034127;
+			// aapt resource value: 0x7f050019
+			public const int keyboardRow2 = 2131034153;
+			
+			// aapt resource value: 0x7f050023
+			public const int keyboardRow3 = 2131034154;
 			
 			// aapt resource value: 0x7f050005
 			public const int lbldescription = 2131034117;
@@ -121,13 +211,19 @@ namespace XamarinHangman
 			public const int linearLayout1 = 2131034120;
 			
 			// aapt resource value: 0x7f05000b
-			public const int listView1 = 2131034123;
+			public const int linearLayoutGameRoot = 2131034123;
+			
+			// aapt resource value: 0x7f05000d
+			public const int linearLayoutKeyboard = 2131034125;
+			
+			// aapt resource value: 0x7f05002b
+			public const int listView1 = 2131034155;
 			
 			// aapt resource value: 0x7f050003
 			public const int sqlite_id = 2131034115;
 			
-			// aapt resource value: 0x7f05000c
-			public const int textViewTitle = 2131034124;
+			// aapt resource value: 0x7f05002c
+			public const int textViewTitle = 2131034156;
 			
 			// aapt resource value: 0x7f050007
 			public const int txtEditDescription = 2131034119;
@@ -164,10 +260,13 @@ namespace XamarinHangman
 			public const int EditItem = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int GameScreen = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int MainMenu = 2130903044;
+			public const int Main = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int MainMenu = 2130903045;
 			
 			static Layout()
 			{
