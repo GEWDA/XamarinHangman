@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbThings\AddItem.cs" />
+    <Compile Include="DbThings\DataAdapter.cs" />
+    <Compile Include="DbThings\DatabaseManager.cs" />
+    <Compile Include="DbThings\EditItem.cs" />
+    <Compile Include="DbThings\MainActivity.cs" />
+    <Compile Include="DbThings\tblToDoList.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
