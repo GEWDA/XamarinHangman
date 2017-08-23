@@ -13,6 +13,17 @@
         android:id="@+id/imageViewBomb"
         android:layout_gravity="top"
         android:layout_weight="1000" />
+    <TextView
+        android:text="Word"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewWord"
+        android:layout_weight="1"
+        android:textSize="75dip"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:background="#ff000000" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -27,7 +38,8 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/keyboardRow1">
+            android:id="@+id/keyboardRow1"
+            android:layout_weight="1">
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -36,7 +48,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button1"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -45,7 +60,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button2"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -54,7 +72,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button3"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -63,7 +84,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button4"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -72,7 +96,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button5"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -81,7 +108,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button6"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -90,7 +120,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button7"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -99,7 +132,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button8"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -108,7 +144,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button9"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -117,7 +156,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button10"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -125,7 +167,8 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/keyboardRow2">
+            android:id="@+id/keyboardRow2"
+            android:layout_weight="1">
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -134,7 +177,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button11"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -143,7 +189,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button12"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -152,7 +201,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button13"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -161,7 +213,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button14"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -170,7 +225,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button15"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -179,7 +237,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button16"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -188,7 +249,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button17"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -197,7 +261,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button18"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -206,7 +273,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button19"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -214,7 +284,8 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/keyboardRow3">
+            android:id="@+id/keyboardRow3"
+            android:layout_weight="1">
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -223,7 +294,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button20"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -232,7 +306,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button21"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -241,7 +318,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button22"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -250,7 +330,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button23"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -259,7 +342,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button24"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -268,7 +354,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button25"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
@@ -277,7 +366,10 @@
                 android:layout_weight="1"
                 android:id="@+id/button26"
                 android:textColor="@android:color/holo_red_dark"
-                android:background="#55555555" />
+                android:background="#55555555"
+                android:lines="3"
+                android:padding="2dip"
+                android:layout_margin="2dip" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using Android.Util;
+using System.Threading;
 
 namespace XamarinHangman
 {
@@ -18,8 +19,13 @@ namespace XamarinHangman
     public class GameActivity : Activity
     {
         string theWord = "annoying";
+        char[] wordCheck;
+        char[] wordDisplay;
+        bool IsGameWon;
         int incorrectGuesses = 0;
+        int score = 0;
         ImageView Bomb;
+        TextView WordView;
         Button[] AllLetters = new Button[26];
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,6 +38,19 @@ namespace XamarinHangman
         {
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             Bomb = FindViewById<ImageView>(Resource.Id.imageViewBomb);
+            WordView = FindViewById<TextView>(Resource.Id.textViewWord);
+            WordView.Typeface = spywareFont;
+            wordCheck = theWord.ToCharArray();
+            wordDisplay = new char[wordCheck.Length*2-1];//multiply by 2 in order to add spaces in between
+            for(int i = 0;i<wordDisplay.Length;i+=2)
+            {
+                wordDisplay[i] = Convert.ToChar("_");
+                if(i<wordDisplay.Length-1)
+                {
+                    wordDisplay[i + 1] = Convert.ToChar(" ");
+                }
+            }
+            UpdateText();
 
             int exceptions = 0;
             for (int i = 0; i < 28; i++)
@@ -45,6 +64,7 @@ namespace XamarinHangman
                 }
                 else { exceptions++; }
             }
+            if (exceptions > 2) { Log.Warn("myDebug", "Warning: More than two exceptions have occurred while initializing keyboard"); }
         }
 
         private void AlphabetButton_Click(object sender, EventArgs e)
@@ -54,8 +74,31 @@ namespace XamarinHangman
             {
                 ChangeImage();
             }
-
+            else
+            {
+                for(int i=0;i<wordCheck.Length;i++)
+                {
+                    if(theSender.Tag.ToString()==Convert.ToString(wordCheck[i]))
+                    {
+                        wordDisplay[i * 2] = Convert.ToChar(theSender.Tag.ToString());
+                        UpdateText();
+                    }
+                }
+            }
+            theSender.Enabled = false;
+            theSender.Text = "";
         }
+
+        private void UpdateText()
+        {
+            WordView.Text = new string(wordDisplay);
+            if(!WordView.Text.Contains("_"))
+            {
+                GameWon();
+            }
+        }
+
+
 
         private void ChangeImage()
         {
@@ -64,13 +107,35 @@ namespace XamarinHangman
             if (incorrectGuesses>8)
             {
                 incorrectGuesses = 8;
-                RunOnUiThread(GameOver);
+                GameLost();
             }
         }
 
-        private void GameOver()
+        private void GameWon()
+        {
+            IsGameWon = true;
+            Toast.MakeText(this, "You Win", ToastLength.Long);
+            DisableButtons();
+        }
+
+
+
+        private void GameLost()
         {
             Toast.MakeText(this, "Game Over", ToastLength.Long);
+            DisableButtons();
+        }
+        private void DisableButtons()
+        {
+            for(int i=0; i<AllLetters.Length;i++)
+            {
+                if (AllLetters[i].Enabled && IsGameWon)// || IsGameWon && Convert.ToString(wordCheck).Contains(AllLetters[i].Tag.ToString()))//for each letter untried after winning //OR required in the word?
+                {
+                    score++;
+                }
+                AllLetters[i].Enabled = false;
+            }
+            IsGameWon = false;//breakpoint enabler line
         }
     }
 }

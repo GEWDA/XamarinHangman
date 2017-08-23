@@ -30,7 +30,6 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
-
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;

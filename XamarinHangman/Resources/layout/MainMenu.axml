@@ -15,7 +15,7 @@
         android:gravity="fill_horizontal"
         android:layout_weight="1"
         android:layout_gravity="center_horizontal"
-        android:textSize="100dp" />
+        android:textSize="100dip" />
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -36,7 +36,7 @@
             android:background="@android:color/transparent"
             android:scaleX="2"
             android:scaleY="2"
-            android:padding="25px"
+            android:padding="25dip"
             android:layout_gravity="fill_vertical"
             android:layout_weight="1" />
         <ImageButton
@@ -48,7 +48,7 @@
             android:tint="#ffff0000"
             android:scaleX="2"
             android:scaleY="2"
-            android:padding="25px"
+            android:padding="25dip"
             android:layout_gravity="fill_vertical"
             android:layout_weight="1" />
         <ImageButton
@@ -60,7 +60,7 @@
             android:tint="#ffff0000"
             android:scaleX="2"
             android:scaleY="2"
-            android:padding="25px"
+            android:padding="25dip"
             android:layout_gravity="fill_vertical"
             android:layout_weight="1" />
         <ImageButton
@@ -72,7 +72,7 @@
             android:tint="#ffff0000"
             android:scaleX="2"
             android:scaleY="2"
-            android:padding="25px"
+            android:padding="25dip"
             android:layout_gravity="fill_vertical"
             android:layout_weight="1" />
     </LinearLayout>
