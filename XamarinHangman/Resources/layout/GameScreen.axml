@@ -3,17 +3,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayoutGameRoot">
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+    android:id="@+id/linearLayoutGameRoot"
+    android:gravity="fill">
     <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
+        android:src="@drawable/bomb1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView1" />
+        android:id="@+id/imageViewBomb"
+        android:layout_gravity="top"
+        android:layout_weight="1000" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutKeyboard">
+        android:id="@+id/linearLayoutKeyboard"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:layout_weight="1">
         <LinearLayout
             android:orientation="horizontal"
             android:minWidth="25px"
@@ -27,70 +34,90 @@
                 android:layout_height="match_parent"
                 android:tag="q"
                 android:layout_weight="1"
-                android:id="@+id/button1" />
+                android:id="@+id/button1"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="w"
                 android:layout_weight="1"
-                android:id="@+id/button2" />
+                android:id="@+id/button2"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="e"
                 android:layout_weight="1"
-                android:id="@+id/button3" />
+                android:id="@+id/button3"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="r"
                 android:layout_weight="1"
-                android:id="@+id/button4" />
+                android:id="@+id/button4"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="t"
                 android:layout_weight="1"
-                android:id="@+id/button5" />
+                android:id="@+id/button5"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="y"
                 android:layout_weight="1"
-                android:id="@+id/button6" />
+                android:id="@+id/button6"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="u"
                 android:layout_weight="1"
-                android:id="@+id/button7" />
+                android:id="@+id/button7"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="i"
                 android:layout_weight="1"
-                android:id="@+id/button8" />
+                android:id="@+id/button8"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="o"
                 android:layout_weight="1"
-                android:id="@+id/button9" />
+                android:id="@+id/button9"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="p"
                 android:layout_weight="1"
-                android:id="@+id/button10" />
+                android:id="@+id/button10"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -105,63 +132,81 @@
                 android:layout_height="match_parent"
                 android:tag="a"
                 android:layout_weight="1"
-                android:id="@+id/button11" />
+                android:id="@+id/button11"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="s"
                 android:layout_weight="1"
-                android:id="@+id/button12" />
+                android:id="@+id/button12"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="d"
                 android:layout_weight="1"
-                android:id="@+id/button13" />
+                android:id="@+id/button13"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="f"
                 android:layout_weight="1"
-                android:id="@+id/button14" />
+                android:id="@+id/button14"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="g"
                 android:layout_weight="1"
-                android:id="@+id/button15" />
+                android:id="@+id/button15"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="h"
                 android:layout_weight="1"
-                android:id="@+id/button16" />
+                android:id="@+id/button16"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="j"
                 android:layout_weight="1"
-                android:id="@+id/button17" />
+                android:id="@+id/button17"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="k"
                 android:layout_weight="1"
-                android:id="@+id/button18" />
+                android:id="@+id/button18"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="l"
                 android:layout_weight="1"
-                android:id="@+id/button19" />
+                android:id="@+id/button19"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -176,49 +221,63 @@
                 android:layout_height="match_parent"
                 android:tag="z"
                 android:layout_weight="1"
-                android:id="@+id/button20" />
+                android:id="@+id/button20"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="x"
                 android:layout_weight="1"
-                android:id="@+id/button21" />
+                android:id="@+id/button21"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="c"
                 android:layout_weight="1"
-                android:id="@+id/button22" />
+                android:id="@+id/button22"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="v"
                 android:layout_weight="1"
-                android:id="@+id/button23" />
+                android:id="@+id/button23"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="b"
                 android:layout_weight="1"
-                android:id="@+id/button24" />
+                android:id="@+id/button24"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="n"
                 android:layout_weight="1"
-                android:id="@+id/button25" />
+                android:id="@+id/button25"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
             <Button
                 android:text="Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:tag="m"
                 android:layout_weight="1"
-                android:id="@+id/button26" />
+                android:id="@+id/button26"
+                android:textColor="@android:color/holo_red_dark"
+                android:background="#55555555" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

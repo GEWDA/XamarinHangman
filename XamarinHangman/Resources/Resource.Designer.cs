@@ -151,10 +151,10 @@ namespace XamarinHangman
 			public const int button24 = 2131034152;
 			
 			// aapt resource value: 0x7f050029
-			public const int button25 = 2131034137;
+			public const int button25 = 2131034153;
 			
 			// aapt resource value: 0x7f05002a
-			public const int button26 = 2131034147;
+			public const int button26 = 2131034154;
 			
 			// aapt resource value: 0x7f050011
 			public const int button3 = 2131034129;
@@ -190,16 +190,16 @@ namespace XamarinHangman
 			public const int imageButtonSettings = 2131034159;
 			
 			// aapt resource value: 0x7f05000c
-			public const int imageView1 = 2131034124;
+			public const int imageViewBomb = 2131034124;
 			
 			// aapt resource value: 0x7f05000e
 			public const int keyboardRow1 = 2131034126;
 			
 			// aapt resource value: 0x7f050019
-			public const int keyboardRow2 = 2131034153;
+			public const int keyboardRow2 = 2131034137;
 			
 			// aapt resource value: 0x7f050023
-			public const int keyboardRow3 = 2131034154;
+			public const int keyboardRow3 = 2131034147;
 			
 			// aapt resource value: 0x7f050005
 			public const int lbldescription = 2131034117;
