@@ -70,6 +70,8 @@ namespace XamarinHangman
         private void AlphabetButton_Click(object sender, EventArgs e)
         {
             Button theSender = (Button)sender;
+            theSender.Enabled = false;
+            theSender.Text = "";
             if (!theWord.Contains(theSender.Tag.ToString()))
             {
                 ChangeImage();
@@ -85,8 +87,6 @@ namespace XamarinHangman
                     }
                 }
             }
-            theSender.Enabled = false;
-            theSender.Text = "";
         }
 
         private void UpdateText()
@@ -114,28 +114,33 @@ namespace XamarinHangman
         private void GameWon()
         {
             IsGameWon = true;
-            Toast.MakeText(this, "You Win", ToastLength.Long);
+            Toast.MakeText(this, "You Win", ToastLength.Long).Show();
             DisableButtons();
         }
 
-
-
         private void GameLost()
         {
-            Toast.MakeText(this, "Game Over", ToastLength.Long);
+            Toast.MakeText(this, "Game Over", ToastLength.Long).Show();
             DisableButtons();
         }
         private void DisableButtons()
         {
             for(int i=0; i<AllLetters.Length;i++)
             {
-                if (AllLetters[i].Enabled && IsGameWon)// || IsGameWon && Convert.ToString(wordCheck).Contains(AllLetters[i].Tag.ToString()))//for each letter untried after winning //OR required in the word?
+                if (AllLetters[i].Enabled)// || IsGameWon && Convert.ToString(wordCheck).Contains(AllLetters[i].Tag.ToString()))//for each letter untried after winning //OR required in the word?
                 {
-                    score++;
+                    if(IsGameWon)
+                    {
+                        score++;
+                    }
+                    else
+                    {
+                        score--;
+                    }
                 }
                 AllLetters[i].Enabled = false;
             }
-            IsGameWon = false;//breakpoint enabler line
+            Toast.MakeText(this, "Score:\t" + score.ToString(), ToastLength.Long).Show();
         }
     }
 }

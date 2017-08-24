@@ -4,11 +4,36 @@ using Android.OS;
 using System;
 using Android.Graphics;
 using Android.Content;
+using Android.Util;
 using Java.IO;
 using Android.Views;
 
 namespace XamarinHangman
 {
+    public class MyBinder : Java.Lang.Object, IServiceConnection
+    {
+        MainActivity mainActivity;
+        public bool IsConnected { get; set; }
+        public Binder b { get; set; }
+        public MyBinder(MainActivity activity)
+        {
+            IsConnected = false;
+            b = null;
+            mainActivity = activity;
+        }
+        public void OnServiceConnected(ComponentName name, IBinder service)
+        {
+            b = service as Binder;
+            IsConnected = this.b != null;
+        }
+
+        public void OnServiceDisconnected(ComponentName name)
+        {
+            IsConnected = false;
+            b = null;
+        }
+    }
+
     [Activity(Label = "XamarinHangman", MainLauncher = true, Icon = "@drawable/icon",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {
@@ -17,6 +42,8 @@ namespace XamarinHangman
         private ImageButton btnScores;
         private ImageButton btnSettings;
         private ImageButton btnPlayers;
+        private MyBinder binder;
+        Intent PlayMusic;
         Typeface spywareFont;
         //public User CurrentPlayer;
         protected override void OnCreate(Bundle bundle)
@@ -26,6 +53,16 @@ namespace XamarinHangman
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.MainMenu);
             InitializeAllTheThings();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            if(!(binder is null))
+            {
+                UnbindService(binder);//ISN'T ACTUALLY RUNNING. LINE IS REACHED, BUT NOTHING IS UNBOUND
+                
+            }
         }
 
         private void InitializeAllTheThings()
@@ -47,6 +84,10 @@ namespace XamarinHangman
         {
             Intent StartGame = new Intent(this, typeof(GameActivity));
             StartActivity(StartGame);
+            PlayMusic = new Intent(this, typeof(AudioService));
+            //StartService(PlayMusic);
+            binder = new MyBinder(this);
+            BindService(PlayMusic,binder,Bind.AutoCreate);
         }
         private void BtnScores_Click(object sender, EventArgs e)
         {

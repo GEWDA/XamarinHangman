@@ -12,7 +12,7 @@ using Android.Util;
 
 namespace ToDoList
 {
-    [Activity(Label = "ToDoList", MainLauncher = true, Icon = "@drawable/icon", Theme = "@android:style/Theme.Holo.Light")]
+    [Activity(Label = "ToDoList", Icon = "@drawable/icon", Theme = "@android:style/Theme.Holo.Light")]
     public class MainActivity : Activity
     {
         //we need this so we can copy the DB across to the phone or emulator......
