@@ -288,7 +288,7 @@ namespace XamarinHangman
 			public const int Blood_Is_Pumpin = 2130968576;
 			
 			// aapt resource value: 0x7f040001
-			public const int Buildup = 2130968577;
+			public const int Sandstorm = 2130968577;
 			
 			static Raw()
 			{

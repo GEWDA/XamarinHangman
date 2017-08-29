@@ -12,13 +12,16 @@ using Android.Widget;
 using Android.Graphics;
 using Android.Util;
 using System.Threading;
+using System.IO;
+using System.Reflection;
 
 namespace XamarinHangman
 {
     [Activity(Label = "GameActivity",Icon ="@drawable/bomb9", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class GameActivity : Activity
     {
-        string theWord = "annoying";
+        string theWord = "annoying" ;//default value
+        string[] Allwords;
         char[] wordCheck;
         char[] wordDisplay;
         bool IsGameWon;
@@ -36,6 +39,13 @@ namespace XamarinHangman
 
         private void InitializeTheGame()
         {
+            Random r = new Random();
+            Assembly assembly = typeof(GameActivity).GetTypeInfo().Assembly;
+            Stream s = assembly.GetManifestResourceStream("XamarinHangman.Resources.raw.WordList.txt");
+            System.IO.StreamReader reader = new System.IO.StreamReader(s);
+            Allwords=reader.ReadToEnd().Split(Convert.ToChar("\n"));
+            theWord = Allwords[r.Next(0,Allwords.Length-1)];
+
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             Bomb = FindViewById<ImageView>(Resource.Id.imageViewBomb);
             WordView = FindViewById<TextView>(Resource.Id.textViewWord);
@@ -53,7 +63,7 @@ namespace XamarinHangman
             UpdateText();
 
             int exceptions = 0;
-            for (int i = 0; i < 28; i++)
+            for (int i = 0; i < 28; i++)//28, due to exactly two deliberate exceptions
             {
                 if(FindViewById(Resource.Id.button1+i).GetType().Equals(FindViewById(Resource.Id.button1).GetType()))
                 {
@@ -103,7 +113,7 @@ namespace XamarinHangman
         private void ChangeImage()
         {
             incorrectGuesses++;
-            Bomb.SetImageResource(Resource.Drawable.bomb1 + incorrectGuesses);
+            Bomb.SetImageResource(Resource.Drawable.bomb1 + incorrectGuesses);//bomb resources ids are adjacent
             if (incorrectGuesses>8)
             {
                 incorrectGuesses = 8;
@@ -120,7 +130,8 @@ namespace XamarinHangman
 
         private void GameLost()
         {
-            Toast.MakeText(this, "Game Over", ToastLength.Long).Show();
+            Toast.MakeText(this, "Game Over", ToastLength.Short).Show();
+            Toast.MakeText(this, "Word:\t" + theWord, ToastLength.Long).Show();
             DisableButtons();
         }
         private void DisableButtons()

@@ -10,6 +10,9 @@ using Android.Views;
 
 namespace XamarinHangman
 {
+    /// <summary>
+    /// A binder to bind the service to the activity
+    /// </summary>
     public class MyBinder : Java.Lang.Object, IServiceConnection
     {
         MainActivity mainActivity;
@@ -58,7 +61,7 @@ namespace XamarinHangman
         protected override void OnResume()
         {
             base.OnResume();
-            if(!(binder is null))
+            if(binder.IsConnected)
             {
                 UnbindService(binder);//ISN'T ACTUALLY RUNNING. LINE IS REACHED, BUT NOTHING IS UNBOUND
                 
@@ -67,6 +70,7 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
+            binder = new MyBinder(this);
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;
@@ -86,12 +90,14 @@ namespace XamarinHangman
             StartActivity(StartGame);
             PlayMusic = new Intent(this, typeof(AudioService));
             //StartService(PlayMusic);
-            binder = new MyBinder(this);
-            BindService(PlayMusic,binder,Bind.AutoCreate);
+            if(!binder.IsConnected)
+            {
+                BindService(PlayMusic,binder,Bind.AutoCreate);
+            }
         }
         private void BtnScores_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            btnPlay.PerformClick();
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {

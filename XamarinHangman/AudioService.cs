@@ -18,6 +18,7 @@ namespace XamarinHangman
     [Service(Exported=false)]
     public class AudioService : Service
     {
+        private int song;//stores an id, so technically is an int
         private MediaPlayer player;
         public override IBinder OnBind(Intent intent)
         {
@@ -27,8 +28,10 @@ namespace XamarinHangman
         public override void OnCreate()
         {
             Log.Info("myDebug","Starting Audio Service");
+            Random randSong = new Random();
+            song = randSong.Next(3);
+            song = song==1? Resource.Raw.Blood_Is_Pumpin : song==2? Resource.Raw.Sandstorm : Resource.Raw.Blood_Is_Pumpin;
             Play();
-            // Create your application here
         }
 
         public override void UnbindService(IServiceConnection conn)
@@ -40,7 +43,7 @@ namespace XamarinHangman
             StopSelf();
         }
 
-        //public void Stop()
+        //public void Stop()//can't be called externally
         //{
         //    player.Pause();
         //    player.Stop();
@@ -49,7 +52,7 @@ namespace XamarinHangman
         //}
         private void Play()
         {
-            player = MediaPlayer.Create(this,Resource.Raw.Blood_Is_Pumpin);
+            player = MediaPlayer.Create(this,song);
             player.Start();
         }
     }
