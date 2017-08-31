@@ -36,6 +36,11 @@ namespace XamarinHangman
             SetContentView(Resource.Layout.GameScreen);
             InitializeTheGame();
         }
+        protected override void OnDestroy()
+        {
+            //UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE
+            base.OnDestroy();
+        }
 
         private void InitializeTheGame()
         {
@@ -45,7 +50,7 @@ namespace XamarinHangman
             System.IO.StreamReader reader = new System.IO.StreamReader(s);
             Allwords=reader.ReadToEnd().Split(Convert.ToChar("\n"));
             theWord = Allwords[r.Next(0,Allwords.Length)];
-            theWord.TrimEnd("\r".ToCharArray());
+            //theWord.TrimEnd("\r".ToCharArray());
 
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             Bomb = FindViewById<ImageView>(Resource.Id.imageViewBomb);
@@ -53,10 +58,10 @@ namespace XamarinHangman
             WordView.Typeface = spywareFont;
             wordCheck = theWord.ToCharArray();
             wordDisplay = new char[wordCheck.Length*2-1];//multiply by 2 in order to add spaces in between
-            for(int i = 0;i<wordDisplay.Length;i+=2)
+            for(int i = 0;i<wordDisplay.Length-1;i+=2)
             {
                 wordDisplay[i] = Convert.ToChar("_");
-                if(i<wordDisplay.Length-1)
+                if(i<wordDisplay.Length-3)
                 {
                     wordDisplay[i + 1] = Convert.ToChar(" ");
                 }
@@ -153,6 +158,15 @@ namespace XamarinHangman
                 AllLetters[i].Enabled = false;
             }
             Toast.MakeText(this, "Score:\t" + score.ToString(), ToastLength.Long).Show();
+            Bomb.Click += Bomb_Click;
+            Toast again = Toast.MakeText(this, "Click the picture to play again",ToastLength.Long);
+            again.SetGravity(GravityFlags.Center, 0, 0);
+            again.Show();
+        }
+
+        private void Bomb_Click(object sender, EventArgs e)
+        {
+            Recreate();
         }
     }
 }
