@@ -61,10 +61,11 @@ namespace XamarinHangman
         protected override void OnResume()
         {
             base.OnResume();
-            if(binder.IsConnected)
+            if(!(PlayMusic is null))
             {
-                UnbindService(binder);//ISN'T ACTUALLY RUNNING. LINE IS REACHED, BUT NOTHING IS UNBOUND
-                
+                UnbindService(binder);
+                StopService(PlayMusic);
+                //PlayMusic = null;//in case you close and re-open app
             }
         }
 

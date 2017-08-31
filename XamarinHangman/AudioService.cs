@@ -29,7 +29,7 @@ namespace XamarinHangman
         {
             Log.Info("myDebug","Starting Audio Service");
             Random randSong = new Random();
-            song = randSong.Next(3);
+            song = randSong.Next(4);
             song = song==1? Resource.Raw.Blood_Is_Pumpin : song==2? Resource.Raw.Sandstorm : Resource.Raw.Blood_Is_Pumpin;
             Play();
         }
@@ -43,13 +43,21 @@ namespace XamarinHangman
             StopSelf();
         }
 
-        //public void Stop()//can't be called externally
-        //{
-        //    player.Pause();
-        //    player.Stop();
-        //    player.Release();
-        //    StopSelf();
-        //}
+        public override void OnDestroy()
+        {
+            player.Pause();
+            player.Stop();
+            player.Release();
+            base.OnDestroy();
+        }
+
+        public void Stop()//can't be called externally
+        {
+            player.Pause();
+            player.Stop();
+            player.Release();
+            StopSelf();
+        }
         private void Play()
         {
             player = MediaPlayer.Create(this,song);

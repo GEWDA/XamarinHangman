@@ -44,7 +44,8 @@ namespace XamarinHangman
             Stream s = assembly.GetManifestResourceStream("XamarinHangman.Resources.raw.WordList.txt");
             System.IO.StreamReader reader = new System.IO.StreamReader(s);
             Allwords=reader.ReadToEnd().Split(Convert.ToChar("\n"));
-            theWord = Allwords[r.Next(0,Allwords.Length-1)];
+            theWord = Allwords[r.Next(0,Allwords.Length)];
+            theWord.TrimEnd("\r".ToCharArray());
 
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             Bomb = FindViewById<ImageView>(Resource.Id.imageViewBomb);
@@ -67,8 +68,8 @@ namespace XamarinHangman
             {
                 if(FindViewById(Resource.Id.button1+i).GetType().Equals(FindViewById(Resource.Id.button1).GetType()))
                 {
-                    AllLetters[i-exceptions] = FindViewById<Button>(Resource.Id.button1+i);//all buttons were created at the same time, so their ids are adjacent ints
-                    AllLetters[i-exceptions].Typeface=spywareFont;
+                    AllLetters[i-exceptions] = FindViewById<Button>(Resource.Id.button1+i); //all buttons were created at the same time, so their ids are adjacent ints
+                    AllLetters[i-exceptions].Typeface=spywareFont;                          //with the exception of the last two keyboard row containers
                     AllLetters[i-exceptions].Text = AllLetters[i-exceptions].Tag.ToString().ToUpper();
                     AllLetters[i-exceptions].Click += AlphabetButton_Click;
                 }
@@ -138,7 +139,7 @@ namespace XamarinHangman
         {
             for(int i=0; i<AllLetters.Length;i++)
             {
-                if (AllLetters[i].Enabled)// || IsGameWon && Convert.ToString(wordCheck).Contains(AllLetters[i].Tag.ToString()))//for each letter untried after winning //OR required in the word?
+                if (AllLetters[i].Enabled)//for each letter untried after winning
                 {
                     if(IsGameWon)
                     {
