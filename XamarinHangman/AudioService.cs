@@ -42,21 +42,12 @@ namespace XamarinHangman
             base.UnbindService(conn);
             StopSelf();
         }
-
         public override void OnDestroy()
         {
             player.Pause();
             player.Stop();
             player.Release();
             base.OnDestroy();
-        }
-
-        public void Stop()//can't be called externally
-        {
-            player.Pause();
-            player.Stop();
-            player.Release();
-            StopSelf();
         }
         private void Play()
         {

@@ -38,6 +38,7 @@ namespace XamarinHangman
         }
         protected override void OnDestroy()
         {
+            object[] record = { score, theWord };
             //UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE
             base.OnDestroy();
         }
@@ -49,7 +50,7 @@ namespace XamarinHangman
             Stream s = assembly.GetManifestResourceStream("XamarinHangman.Resources.raw.WordList.txt");
             System.IO.StreamReader reader = new System.IO.StreamReader(s);
             Allwords=reader.ReadToEnd().Split(Convert.ToChar("\n"));
-            theWord = Allwords[r.Next(0,Allwords.Length)];
+            theWord = Allwords[r.Next(0,Allwords.Length)].ToLower().Replace("-",String.Empty);//selects random word from the list, removes capital letters and dashes
             //theWord.TrimEnd("\r".ToCharArray());
 
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
