@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioService.cs" />
+    <Compile Include="DBQueries.cs" />
     <Compile Include="DbThings\AddItem.cs" />
     <Compile Include="DbThings\DataAdapter.cs" />
     <Compile Include="DbThings\DatabaseManager.cs" />
@@ -70,11 +71,12 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="DBClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\spyware.ttf" />
     <AndroidAsset Include="Assets\database\ToDoList.sqlite" />
+    <AndroidAsset Include="Assets\database\hangmanScores.sqlite" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />

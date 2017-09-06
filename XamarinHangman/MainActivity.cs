@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using System;
+using SQLite;
 using Android.Graphics;
 using Android.Content;
 using Android.Util;
@@ -17,23 +18,23 @@ namespace XamarinHangman
     {
         MainActivity mainActivity;
         public bool IsConnected { get; set; }
-        public Binder b { get; set; }
+        public Binder B { get; set; }
         public MyBinder(MainActivity activity)
         {
             IsConnected = false;
-            b = null;
+            B = null;
             mainActivity = activity;
         }
         public void OnServiceConnected(ComponentName name, IBinder service)
         {
-            b = service as Binder;
-            IsConnected = this.b != null;
+            B = service as Binder;
+            IsConnected = this.B != null;
         }
 
         public void OnServiceDisconnected(ComponentName name)
         {
             IsConnected = false;
-            b = null;
+            B = null;
         }
     }
 
@@ -83,6 +84,10 @@ namespace XamarinHangman
             btnSettings.Click += BtnSettings_Click;
             btnPlayers = FindViewById<ImageButton>(Resource.Id.imageButtonPlayers);
             btnPlayers.Click += BtnPlayers_Click;
+            string DBPath = @"XamarinHangman/Assets/database/hangmanScores.sqlite";
+            var AConn = new SQLiteAsyncConnection(DBPath);
+            AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
+            AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created"); });
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
@@ -98,11 +103,11 @@ namespace XamarinHangman
         }
         private void BtnScores_Click(object sender, EventArgs e)
         {
-            btnPlay.PerformClick();
+            btnPlay.PerformClick();//FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//will contain delete query
         }
         private void BtnPlayers_Click(object sender, EventArgs e)
         {
