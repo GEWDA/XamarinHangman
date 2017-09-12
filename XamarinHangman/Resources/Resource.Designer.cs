@@ -192,6 +192,9 @@ namespace XamarinHangman
 			// aapt resource value: 0x7f06000c
 			public const int imageViewBomb = 2131099660;
 			
+			// aapt resource value: 0x7f060032
+			public const int invisibleSpinner = 2131099698;
+			
 			// aapt resource value: 0x7f06000f
 			public const int keyboardRow1 = 2131099663;
 			

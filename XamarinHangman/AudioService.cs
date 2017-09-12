@@ -30,6 +30,7 @@ namespace XamarinHangman
             Log.Info("myDebug","Starting Audio Service");
             Random randSong = new Random();
             song = randSong.Next(4);
+            Log.Info("myDebug", "selecting song #" + song.ToString());
             song = song==1? Resource.Raw.Blood_Is_Pumpin : song==2? Resource.Raw.Sandstorm : Resource.Raw.Final_Countdown;
             Play();
         }

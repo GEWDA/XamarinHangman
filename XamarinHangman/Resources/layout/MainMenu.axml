@@ -28,7 +28,7 @@
         android:layout_weight="750">
         <ImageButton
             android:src="@android:drawable/ic_menu_send"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonPlay"
             android:foreground="@android:drawable/ic_media_play"
@@ -37,11 +37,12 @@
             android:scaleX="2"
             android:scaleY="2"
             android:padding="25dip"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
         <ImageButton
             android:src="@android:drawable/ic_menu_save"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonScores"
             android:background="@android:color/transparent"
@@ -49,11 +50,12 @@
             android:scaleX="2"
             android:scaleY="2"
             android:padding="25dip"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
         <ImageButton
             android:src="@android:drawable/ic_menu_manage"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonSettings"
             android:background="@android:color/transparent"
@@ -61,11 +63,12 @@
             android:scaleX="2"
             android:scaleY="2"
             android:padding="25dip"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
         <ImageButton
             android:src="@android:drawable/ic_menu_edit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButtonPlayers"
             android:background="@android:color/transparent"
@@ -73,7 +76,15 @@
             android:scaleX="2"
             android:scaleY="2"
             android:padding="25dip"
-            android:layout_gravity="fill_vertical"
-            android:layout_weight="1" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/invisibleSpinner"
+            android:clickable="false"
+            android:elevation="-1dp"
+            android:foregroundTint="#00000000" />
     </LinearLayout>
 </LinearLayout>

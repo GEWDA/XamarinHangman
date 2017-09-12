@@ -50,25 +50,27 @@ namespace XamarinHangman
             Stream s = assembly.GetManifestResourceStream("XamarinHangman.Resources.raw.WordList.txt");
             System.IO.StreamReader reader = new System.IO.StreamReader(s);
             Allwords=reader.ReadToEnd().Split(Convert.ToChar("\n"));
-            theWord = Allwords[r.Next(0,Allwords.Length)].ToLower().Replace("-",String.Empty);//selects random word from the list, removes capital letters and dashes
-            //theWord.TrimEnd("\r".ToCharArray());
+            theWord = Allwords[r.Next(0,Allwords.Length)].ToLower().Replace("-",String.Empty).Replace("\r",String.Empty);//selects random word from the list, removes capital letters and dashes
+            //theWord.TrimEnd("\r".ToCharArray());//doesn't actually trim
 
             Typeface spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             Bomb = FindViewById<ImageView>(Resource.Id.imageViewBomb);
             WordView = FindViewById<TextView>(Resource.Id.textViewWord);
             WordView.Typeface = spywareFont;
+            #region word initialization
             wordCheck = theWord.ToCharArray();
             wordDisplay = new char[wordCheck.Length*2-1];//multiply by 2 in order to add spaces in between
-            for(int i = 0;i<wordDisplay.Length-1;i+=2)
+            for(int i = 0;i<wordDisplay.Length;i+=2)
             {
                 wordDisplay[i] = Convert.ToChar("_");
-                if(i<wordDisplay.Length-3)
+                if(i<wordDisplay.Length-1)
                 {
                     wordDisplay[i + 1] = Convert.ToChar(" ");
                 }
             }
             UpdateText();
-
+#endregion
+            #region alphabet buttons initialization
             int exceptions = 0;
             for (int i = 0; i < 28; i++)//28, due to exactly two deliberate exceptions
             {
@@ -82,6 +84,7 @@ namespace XamarinHangman
                 else { exceptions++; }
             }
             if (exceptions > 2) { Log.Warn("myDebug", "Warning: More than two exceptions have occurred while initializing keyboard"); }
+#endregion
         }
 
         private void AlphabetButton_Click(object sender, EventArgs e)
@@ -159,6 +162,7 @@ namespace XamarinHangman
                 AllLetters[i].Enabled = false;
             }
             Toast.MakeText(this, "Score:\t" + score.ToString(), ToastLength.Long).Show();
+
             Bomb.Click += Bomb_Click;
             Toast again = Toast.MakeText(this, "Click the picture to play again",ToastLength.Long);
             again.SetGravity(GravityFlags.Center, 0, 0);

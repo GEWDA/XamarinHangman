@@ -76,7 +76,9 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\spyware.ttf" />
     <AndroidAsset Include="Assets\database\ToDoList.sqlite" />
-    <AndroidAsset Include="Assets\database\hangmanScores.sqlite" />
+    <AndroidAsset Include="Assets\database\hangmanScores.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
