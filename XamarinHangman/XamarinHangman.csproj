@@ -83,11 +83,16 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <AndroidAsset Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\AddItem.axml" />
-    <AndroidResource Include="Resources\layout\CustomRow.axml" />
-    <AndroidResource Include="Resources\layout\EditItem.axml" />
-    <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\layout\GameScreen.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NukeConfirmation.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddUser.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MainMenu - Copy.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

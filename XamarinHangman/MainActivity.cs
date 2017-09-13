@@ -42,10 +42,15 @@ namespace XamarinHangman
     public class MainActivity : Activity
     {
         private TextView mainTitle;
+        private int currentView;
+        private TextView confirmation;
+        private TextView confirmationSub;
+        private Switch nukeSwitch;
         private ImageButton btnPlay;
         private ImageButton btnScores;
         private ImageButton btnSettings;
         private ImageButton btnPlayers;
+        private Button btnNuke;
         private MyBinder binder;
         private Spinner usersSpinner;
         private ArrayAdapter<string> userArrayAdapter;
@@ -60,8 +65,25 @@ namespace XamarinHangman
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            SetContentView (Resource.Layout.MainMenu);
+            currentView = Resource.Layout.MainMenu;
+            SetContentView (currentView);
+            LoadDB();
+            AConn = new SQLiteAsyncConnection(DBPath);
+            AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
+            AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created"); });
             InitializeAllTheThings();
+        }
+
+
+        public override void OnBackPressed()
+        {
+            if (currentView != Resource.Layout.MainMenu)
+            {
+                currentView = Resource.Layout.MainMenu;
+                SetContentView(currentView);
+                InitializeAllTheThings();
+            }
+            else { base.OnBackPressed(); }
         }
 
         protected override void OnResume()
@@ -77,11 +99,6 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
-            LoadDB();
-            AConn = new SQLiteAsyncConnection(DBPath);
-            AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
-            AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created"); });
-
             binder = new MyBinder(this);
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
@@ -140,28 +157,59 @@ namespace XamarinHangman
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();//will contain delete query
+            currentView = Resource.Layout.NukeConfirmation;
+            SetContentView(currentView);
+            nukeSwitch = FindViewById<Switch>(Resource.Id.switchNuke);
+            nukeSwitch.Typeface = spywareFont;
+            confirmation = FindViewById<TextView>(Resource.Id.txtConfirmation);
+            confirmation.Typeface = spywareFont;
+            confirmationSub = FindViewById<TextView>(Resource.Id.txtConfirmationSubtext);
+            confirmationSub.Typeface = spywareFont;
+            btnNuke = FindViewById<Button>(Resource.Id.buttonNuke);
+            btnNuke.Typeface = spywareFont;
+            btnNuke.Click += NukeDB;
         }
         private void BtnPlayers_Click(object sender, EventArgs e)
         {
-            btnPlayers.Enabled = false;//no spamming if it lags
             GetUsersNames(AConn.Table<Users>().ToListAsync());
         }
 
+
+
+
+        //~DB CALLS/RESULTS
+#region ~DB CALLS/RESULTS
         private void GetUsersNames(System.Threading.Tasks.Task<System.Collections.Generic.List<Users>> a)
         {
-            if (nameArray.Length != a.Result.Count)//if updating a user, will need to explicitly refresh
+            Log.Info("MyDebug", "Found " + nameArray.Length.ToString() + " users");
+            if (nameArray.Length != a.Result.Count)
             {
                 nameArray = new string[a.Result.Count];
                 for (int i = 0; i < a.Result.Count; i++)
                 {
                     nameArray[i] = a.Result[i].Name;
                 }
+                Log.Info("MyDebug", "Now has found " + nameArray.Length.ToString() + " users");
                 UpdateSpinner();
-                usersSpinner.PerformClick();
-                btnPlayers.Enabled = true;
             }
+            usersSpinner.PerformClick();
         }
+        private void NukeDB(object sender, EventArgs e)
+        {
+            if(nukeSwitch.Checked)
+            {
+                AConn.ExecuteAsync("DELETE * FROM Scores");
+                AConn.ExecuteAsync("DELETE * FROM Users WHERE UserID != 1");//leaves the special create new user record
+                Log.Info("myDebug", "DB Nuked");
+            }
+            else { Log.Info("myDebug", "DB NOT nuked"); }
+            currentView = Resource.Layout.MainMenu;
+            SetContentView(currentView);
+            InitializeAllTheThings();
+        }
+
+
+#endregion
     }
 }
 
