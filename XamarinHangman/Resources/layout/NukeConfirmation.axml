@@ -4,8 +4,9 @@
     android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="3"
-    android:background="#cc000000">
+    android:elevation="3dip"
+    android:background="#cc000000"
+    android:clipChildren="false">
     <TextView
         android:text="Delete all scores and users?"
         android:textColor="@android:color/holo_red_dark"
@@ -16,7 +17,7 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:elevation="3" />
+        android:elevation="3dip" />
     <TextView
         android:text="This can not be undone"
         android:textColor="@android:color/holo_red_dark"
@@ -27,7 +28,7 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:elevation="3" />
+        android:elevation="3dip" />
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +38,7 @@
         android:textOff="No"
         android:textOn="Yes"
         android:gravity="center"
-        android:elevation="3" />
+        android:elevation="3dip" />
     <Button
         android:text="Ok"
         android:textColor="@android:color/holo_red_dark"
@@ -52,5 +53,5 @@
         android:textSize="25dip"
         android:padding="5dip"
         android:layout_marginBottom="10dip"
-        android:elevation="3" />
+        android:elevation="3dip" />
 </LinearLayout>

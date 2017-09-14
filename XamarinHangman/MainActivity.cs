@@ -41,8 +41,9 @@ namespace XamarinHangman
     [Activity(Label = "XamarinHangman", MainLauncher = true, Icon = "@drawable/bomb9",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {
+        private LinearLayout mainMenu;
+        private LinearLayout nukeMenu;
         private TextView mainTitle;
-        private int currentView;
         private TextView confirmation;
         private TextView confirmationSub;
         private Switch nukeSwitch;
@@ -65,8 +66,7 @@ namespace XamarinHangman
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            currentView = Resource.Layout.MainMenu;
-            SetContentView (currentView);
+            SetContentView (Resource.Layout.MainMenu);
             LoadDB();
             AConn = new SQLiteAsyncConnection(DBPath);
             AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
@@ -77,11 +77,11 @@ namespace XamarinHangman
 
         public override void OnBackPressed()
         {
-            if (currentView != Resource.Layout.MainMenu)
+            if (nukeMenu.Activated)
             {
-                currentView = Resource.Layout.MainMenu;
-                SetContentView(currentView);
-                InitializeAllTheThings();
+                mainMenu.BringToFront();
+                nukeMenu.Activated = false;
+                mainMenu.Activated = true;
             }
             else { base.OnBackPressed(); }
         }
@@ -103,6 +103,12 @@ namespace XamarinHangman
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;
+            mainMenu = FindViewById<LinearLayout>(Resource.Id.MainMenuLayout);
+            nukeMenu = FindViewById<LinearLayout>(Resource.Id.NukeMenuLayout);
+            nukeMenu.Activated = false;
+            mainMenu.Activated = true;
+            mainMenu.BringToFront();
+
 
             usersSpinner = FindViewById<Spinner>(Resource.Id.invisibleSpinner);
             UpdateSpinner();
@@ -115,6 +121,16 @@ namespace XamarinHangman
             btnSettings.Click += BtnSettings_Click;
             btnPlayers = FindViewById<ImageButton>(Resource.Id.imageButtonPlayers);
             btnPlayers.Click += BtnPlayers_Click;
+
+            nukeSwitch = FindViewById<Switch>(Resource.Id.switchNuke);
+            nukeSwitch.Typeface = spywareFont;
+            confirmation = FindViewById<TextView>(Resource.Id.txtConfirmation);
+            confirmation.Typeface = spywareFont;
+            confirmationSub = FindViewById<TextView>(Resource.Id.txtConfirmationSubtext);
+            confirmationSub.Typeface = spywareFont;
+            btnNuke = FindViewById<Button>(Resource.Id.buttonNuke);
+            btnNuke.Typeface = spywareFont;
+            btnNuke.Click += NukeDB;
         }
 
         private void LoadDB()
@@ -157,17 +173,10 @@ namespace XamarinHangman
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            currentView = Resource.Layout.NukeConfirmation;
-            SetContentView(currentView);
-            nukeSwitch = FindViewById<Switch>(Resource.Id.switchNuke);
-            nukeSwitch.Typeface = spywareFont;
-            confirmation = FindViewById<TextView>(Resource.Id.txtConfirmation);
-            confirmation.Typeface = spywareFont;
-            confirmationSub = FindViewById<TextView>(Resource.Id.txtConfirmationSubtext);
-            confirmationSub.Typeface = spywareFont;
-            btnNuke = FindViewById<Button>(Resource.Id.buttonNuke);
-            btnNuke.Typeface = spywareFont;
-            btnNuke.Click += NukeDB;
+            nukeMenu.Activated = true;
+            mainMenu.Activated = false;
+            nukeMenu.BringToFront();
+
         }
         private void BtnPlayers_Click(object sender, EventArgs e)
         {
@@ -203,11 +212,11 @@ namespace XamarinHangman
                 Log.Info("myDebug", "DB Nuked");
             }
             else { Log.Info("myDebug", "DB NOT nuked"); }
-            currentView = Resource.Layout.MainMenu;
-            SetContentView(currentView);
-            InitializeAllTheThings();
-        }
+            mainMenu.BringToFront();
+            nukeMenu.Activated = false;
+            mainMenu.Activated = true;
 
+        }
 
 #endregion
     }

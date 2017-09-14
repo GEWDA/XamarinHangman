@@ -61,12 +61,6 @@
   <ItemGroup>
     <Compile Include="AudioService.cs" />
     <Compile Include="DBQueries.cs" />
-    <Compile Include="DbThings\AddItem.cs" />
-    <Compile Include="DbThings\DataAdapter.cs" />
-    <Compile Include="DbThings\DatabaseManager.cs" />
-    <Compile Include="DbThings\EditItem.cs" />
-    <Compile Include="DbThings\MainActivity.cs" />
-    <Compile Include="DbThings\tblToDoList.cs" />
     <Compile Include="GameActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -92,9 +86,9 @@
     <AndroidResource Include="Resources\layout\AddUser.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\MainMenu - Copy.axml">
+    <None Include="Resources\layout\MainMenu - Copy.axml">
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainMenu.axml">
