@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\spyware.ttf" />
-    <AndroidAsset Include="Assets\database\ToDoList.sqlite" />
     <AndroidAsset Include="Assets\database\hangmanScores.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
@@ -80,15 +79,9 @@
     <AndroidResource Include="Resources\layout\GameScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\NukeConfirmation.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\AddUser.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <None Include="Resources\layout\MainMenu - Copy.axml">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainMenu.axml">

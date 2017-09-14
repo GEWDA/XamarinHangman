@@ -11,48 +11,21 @@ using Android.Views;
 
 namespace XamarinHangman
 {
-    /// <summary>
-    /// A binder to bind the service to the activity
-    /// </summary>
-    public class MyBinder : Java.Lang.Object, IServiceConnection
-    {
-        MainActivity mainActivity;
-        public bool IsConnected { get; set; }
-        public Binder B { get; set; }
-        public MyBinder(MainActivity activity)
-        {
-            IsConnected = false;
-            B = null;
-            mainActivity = activity;
-        }
-        public void OnServiceConnected(ComponentName name, IBinder service)
-        {
-            B = service as Binder;
-            IsConnected = this.B != null;
-        }
-
-        public void OnServiceDisconnected(ComponentName name)
-        {
-            IsConnected = false;
-            B = null;
-        }
-    }
-
-    [Activity(Label = "XamarinHangman", MainLauncher = true, Icon = "@drawable/bomb9",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
+    [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/bomb9",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {
         private LinearLayout mainMenu;
         private LinearLayout nukeMenu;
+        private LinearLayout addMenu;//         IMPLEMENT THIS
         private TextView mainTitle;
         private TextView confirmation;
         private TextView confirmationSub;
-        private Switch nukeSwitch;
+        private Button nukeCancel;
         private ImageButton btnPlay;
         private ImageButton btnScores;
         private ImageButton btnSettings;
         private ImageButton btnPlayers;
         private Button btnNuke;
-        private MyBinder binder;
         private Spinner usersSpinner;
         private ArrayAdapter<string> userArrayAdapter;
         private string[] nameArray= new string[0];
@@ -60,12 +33,10 @@ namespace XamarinHangman
         private SQLiteAsyncConnection AConn;
         Intent PlayMusic;
         Typeface spywareFont;
-        //public User CurrentPlayer;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.MainMenu);
             LoadDB();
             AConn = new SQLiteAsyncConnection(DBPath);
@@ -74,13 +45,13 @@ namespace XamarinHangman
             InitializeAllTheThings();
         }
 
-
         public override void OnBackPressed()
         {
-            if (nukeMenu.Activated)
+            if (!mainMenu.Activated)
             {
                 mainMenu.BringToFront();
                 nukeMenu.Activated = false;
+                addMenu.Activated = false;
                 mainMenu.Activated = true;
             }
             else { base.OnBackPressed(); }
@@ -91,7 +62,6 @@ namespace XamarinHangman
             base.OnResume();
             if(!(PlayMusic is null))
             {
-                UnbindService(binder);
                 StopService(PlayMusic);
                 PlayMusic = null;//in case you close and re-open app
             }
@@ -99,7 +69,6 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
-            binder = new MyBinder(this);
             mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
             spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
             mainTitle.Typeface = spywareFont;
@@ -122,8 +91,9 @@ namespace XamarinHangman
             btnPlayers = FindViewById<ImageButton>(Resource.Id.imageButtonPlayers);
             btnPlayers.Click += BtnPlayers_Click;
 
-            nukeSwitch = FindViewById<Switch>(Resource.Id.switchNuke);
-            nukeSwitch.Typeface = spywareFont;
+            nukeCancel = FindViewById<Button>(Resource.Id.buttonAbort);
+            nukeCancel.Typeface = spywareFont;
+            nukeCancel.Click += NukeDB;
             confirmation = FindViewById<TextView>(Resource.Id.txtConfirmation);
             confirmation.Typeface = spywareFont;
             confirmationSub = FindViewById<TextView>(Resource.Id.txtConfirmationSubtext);
@@ -161,11 +131,7 @@ namespace XamarinHangman
             Intent StartGame = new Intent(this, typeof(GameActivity));
             StartActivity(StartGame);
             PlayMusic = new Intent(this, typeof(AudioService));
-            //StartService(PlayMusic);
-            if(!binder.IsConnected)
-            {
-                BindService(PlayMusic,binder,Bind.AutoCreate);
-            }
+            StartService(PlayMusic);
         }
         private void BtnScores_Click(object sender, EventArgs e)
         {
@@ -176,7 +142,6 @@ namespace XamarinHangman
             nukeMenu.Activated = true;
             mainMenu.Activated = false;
             nukeMenu.BringToFront();
-
         }
         private void BtnPlayers_Click(object sender, EventArgs e)
         {
@@ -205,7 +170,7 @@ namespace XamarinHangman
         }
         private void NukeDB(object sender, EventArgs e)
         {
-            if(nukeSwitch.Checked)
+            if(sender==btnNuke)
             {
                 AConn.ExecuteAsync("DELETE * FROM Scores");
                 AConn.ExecuteAsync("DELETE * FROM Users WHERE UserID != 1");//leaves the special create new user record

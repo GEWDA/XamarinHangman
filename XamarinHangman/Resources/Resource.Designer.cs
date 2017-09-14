@@ -174,6 +174,9 @@ namespace XamarinHangman
 			// aapt resource value: 0x7f06000d
 			public const int button9 = 2131099661;
 			
+			// aapt resource value: 0x7f06002f
+			public const int buttonAbort = 2131099695;
+			
 			// aapt resource value: 0x7f06002e
 			public const int buttonNuke = 2131099694;
 			
@@ -210,14 +213,14 @@ namespace XamarinHangman
 			// aapt resource value: 0x7f060024
 			public const int linearLayout1 = 2131099684;
 			
+			// aapt resource value: 0x7f06002d
+			public const int linearLayout2H = 2131099693;
+			
 			// aapt resource value: 0x7f060000
 			public const int linearLayoutGameRoot = 2131099648;
 			
 			// aapt resource value: 0x7f060003
 			public const int linearLayoutKeyboard = 2131099651;
-			
-			// aapt resource value: 0x7f06002d
-			public const int switchNuke = 2131099693;
 			
 			// aapt resource value: 0x7f060023
 			public const int textViewTitle = 2131099683;
@@ -252,9 +255,6 @@ namespace XamarinHangman
 			
 			// aapt resource value: 0x7f030002
 			public const int MainMenu = 2130903042;
-			
-			// aapt resource value: 0x7f030003
-			public const int NukeConfirmation = 2130903043;
 			
 			static Layout()
 			{
