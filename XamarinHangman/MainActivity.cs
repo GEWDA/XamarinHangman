@@ -11,12 +11,40 @@ using Android.Views;
 
 namespace XamarinHangman
 {
+
+    //public class CustListener : Android.Widget.AdapterView.IOnItemSelectedListener
+    //{
+    //    public void OnItemSelected(AdapterView parent, View item, int position, long l)//might need AdapterView<Type>
+    //    {
+
+    //    }
+    //    public void OnNothingSelected(AdapterView parent)//might need AdapterView<Type>
+    //    {
+
+    //    }
+
+    //}
+
     [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/bomb9",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {
+        public class MySpinner:Spinner
+        {
+            AdapterView.IOnItemSelectedListener listener;
+            public MySpinner(Context context, IAttributeSet attrs):base(context,attrs){ }
+            public override void SetSelection(int position)
+            {
+                base.SetSelection(position);
+                if (listener != null)
+                { listener.OnItemSelected(this, this.SelectedView, position, 0); }
+            }
+            public void SetOnItemSelectedEvenWhenUnchangedListener(IOnItemSelectedListener theListener)//WHY IS THIS NOT IN BY DEFAULT???
+            { this.listener = theListener; }
+        }
+
         private LinearLayout mainMenu;
         private LinearLayout nukeMenu;
-        private LinearLayout addMenu;//         IMPLEMENT THIS
+        private LinearLayout addMenu;
         private TextView mainTitle;
         private TextView confirmation;
         private TextView confirmationSub;
@@ -74,13 +102,17 @@ namespace XamarinHangman
             mainTitle.Typeface = spywareFont;
             mainMenu = FindViewById<LinearLayout>(Resource.Id.MainMenuLayout);
             nukeMenu = FindViewById<LinearLayout>(Resource.Id.NukeMenuLayout);
+            addMenu = FindViewById<LinearLayout>(Resource.Id.AddUserLayout);
+            addMenu.Activated = false;
             nukeMenu.Activated = false;
             mainMenu.Activated = true;
             mainMenu.BringToFront();
 
 
             usersSpinner = FindViewById<Spinner>(Resource.Id.invisibleSpinner);
-            UpdateSpinner();
+            //usersSpinner = (MySpinner)aSpinner;
+            //UpdateSpinner();
+            usersSpinner.ItemSelected += UsersSpinner_ItemSelected;
 
             btnPlay = FindViewById<ImageButton>(Resource.Id.imageButtonPlay);
             btnPlay.Click += BtnPlay_Click;
@@ -103,6 +135,18 @@ namespace XamarinHangman
             btnNuke.Click += NukeDB;
         }
 
+        private void UpdateCurrentUser(object sender, View.FocusChangeEventArgs e)
+        {
+            Log.Info("myDebug", "UpdateCurrentUser triggered!");
+            //if (true)
+            //{
+            //    addMenu.Activated = true;
+            //    nukeMenu.Activated = false;
+            //    mainMenu.Activated = false;
+            //    addMenu.BringToFront();
+            //}
+        }
+
         private void LoadDB()
         {
             using (BinaryReader br = new BinaryReader(Assets.Open(@"database/hangmanScores.sqlite")))
@@ -121,13 +165,26 @@ namespace XamarinHangman
 
         private void UpdateSpinner()
         {
-            userArrayAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, nameArray);
+            userArrayAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, nameArray);//fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  
             userArrayAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            //set background colour, and text colour
             usersSpinner.Adapter = userArrayAdapter;
+            //usersSpinner.Click += UpdateCurrentUser;//Java.Lang.RuntimeException: Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead
+            //usersSpinner.ItemClick += UpdateCurrentUser;//Java.Lang.RuntimeException: setOnItemClickListener cannot be used with a spinner.
+        }
+
+        private void UsersSpinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Log.Info("myDebug", "IT WORKS");
+            Toast.MakeText(this,"This feature is currently unavailable",ToastLength.Long).Show();
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
+            if (!(usersSpinner.SelectedItem is null) && usersSpinner.SelectedItem.ToString()!="New User...")
+            {
+                Log.Info("myDebug", "Works");
+            }
             Intent StartGame = new Intent(this, typeof(GameActivity));
             StartActivity(StartGame);
             PlayMusic = new Intent(this, typeof(AudioService));
@@ -135,10 +192,12 @@ namespace XamarinHangman
         }
         private void BtnScores_Click(object sender, EventArgs e)
         {
+            Toast.MakeText(this, "The highscores feature is currently unavailable,\nlaunching game instead...", ToastLength.Long).Show();
             btnPlay.PerformClick();//FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {
+            addMenu.Activated = false;
             nukeMenu.Activated = true;
             mainMenu.Activated = false;
             nukeMenu.BringToFront();

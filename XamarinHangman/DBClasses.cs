@@ -14,7 +14,7 @@ namespace XamarinHangman
 {
     public class Users
     {
-        [NotNull,PrimaryKey,AutoIncrement,Unique]
+        [NotNull, PrimaryKey, AutoIncrement, Unique]
         public int UserID { get; set; }
         [NotNull]
         public string Name { get; set; }
@@ -22,8 +22,8 @@ namespace XamarinHangman
         public int GamesWon { get; set; }
         public int HighestScore { get; set; }//not in DB, may crash
         public string HighestScoreWord { get; set; }//not in DB
-        public int WinRate { get {  try { return GamesWon / GamesPlayed * 100; } catch { return 0; }; }//not in DB
-        }
+        public int WinRate { get { try { return GamesWon / GamesPlayed * 100; } catch { return 0; }; } }//not in DB
+        //public int IsCurrentUser { get { return IsCurrentUser; } set { if (IsCurrentUser == 1) { IsCurrentUser = 0; } else { IsCurrentUser = 1; } } }
     }
     public class Scores
     {

@@ -90,6 +90,9 @@ namespace XamarinHangman
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060030
+			public const int AddUserLayout = 2131099696;
+			
 			// aapt resource value: 0x7f060022
 			public const int MainMenuLayout = 2131099682;
 			
@@ -177,8 +180,14 @@ namespace XamarinHangman
 			// aapt resource value: 0x7f06002f
 			public const int buttonAbort = 2131099695;
 			
+			// aapt resource value: 0x7f060033
+			public const int buttonAddUser = 2131099699;
+			
 			// aapt resource value: 0x7f06002e
 			public const int buttonNuke = 2131099694;
+			
+			// aapt resource value: 0x7f060032
+			public const int editTextNewUser = 2131099698;
 			
 			// aapt resource value: 0x7f060021
 			public const int frameLayout1 = 2131099681;
@@ -221,6 +230,9 @@ namespace XamarinHangman
 			
 			// aapt resource value: 0x7f060003
 			public const int linearLayoutKeyboard = 2131099651;
+			
+			// aapt resource value: 0x7f060031
+			public const int textEnterName = 2131099697;
 			
 			// aapt resource value: 0x7f060023
 			public const int textViewTitle = 2131099683;

@@ -14,7 +14,7 @@ using Android.Util;
 using System.Threading;
 using System.IO;
 using System.Reflection;
-
+using SQLite;
 namespace XamarinHangman
 {
     [Activity(Label = "GameActivity",Icon ="@drawable/bomb9", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
@@ -27,21 +27,29 @@ namespace XamarinHangman
         bool IsGameWon;
         int incorrectGuesses = 0;
         int score = 0;
+        //private SQLiteAsyncConnection AConn;
+        string DBPath = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.ToString(), "hangmanScores.sqlite");
         ImageView Bomb;
         TextView WordView;
         Button[] AllLetters = new Button[26];
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            //AConn = new SQLiteAsyncConnection(DBPath);
+            //AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
+            //AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created"); });
             SetContentView(Resource.Layout.GameScreen);
             InitializeTheGame();
         }
         protected override void OnDestroy()
         {
             object[] record = { score, theWord };
+            //UpdateScores(record);
             //UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE   UPDATE SCORES HERE
             base.OnDestroy();
         }
+
+
 
         private void InitializeTheGame()
         {
@@ -172,6 +180,15 @@ namespace XamarinHangman
         private void Bomb_Click(object sender, EventArgs e)
         {
             Recreate();
+        }
+
+
+
+        //DB Calls
+        private void UpdateScores(object[] record)
+        {
+            //var e=AConn.Table<Users>().Where(x => x.IsCurrentUser == 1).FirstAsync();
+            //AConn.ExecuteAsync("INSERT INTO Scores (score, word, UsersIDFK) VALUES ("+record[0].ToString()+", "+record[1].ToString()+","+ AConn.Table<Users>().Where(x=>x.IsCurrentUser==1).FirstAsync() + ")");
         }
     }
 }
