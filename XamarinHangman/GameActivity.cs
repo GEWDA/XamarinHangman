@@ -36,8 +36,8 @@ namespace XamarinHangman
         {
             base.OnCreate(savedInstanceState);
             //AConn = new SQLiteAsyncConnection(DBPath);
-            //AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created"); });
-            //AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created"); });
+            //AConn.CreateTableAsync<Scores>().ContinueWith(t => { Log.Info("myDebug", "Scores table created in game"); });
+            //AConn.CreateTableAsync<Users>().ContinueWith(t => { Log.Info("myDebug", "Users table created in game"); });
             SetContentView(Resource.Layout.GameScreen);
             InitializeTheGame();
         }
@@ -170,6 +170,7 @@ namespace XamarinHangman
                 AllLetters[i].Enabled = false;
             }
             Toast.MakeText(this, "Score:\t" + score.ToString(), ToastLength.Long).Show();
+            //UpdateScores(score,theWord,isGameWon)//this is where i WOULD update the scores and the number of games the user has played
 
             Bomb.Click += Bomb_Click;
             Toast again = Toast.MakeText(this, "Click the picture to play again",ToastLength.Long);

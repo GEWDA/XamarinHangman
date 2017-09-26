@@ -20,7 +20,7 @@ namespace XamarinHangman
         public string Name { get; set; }
         public int GamesPlayed { get; set; }
         public int GamesWon { get; set; }
-        public int HighestScore { get; set; }//not in DB, may crash
+        public int HighestScore { get; set; }//not in DB
         public string HighestScoreWord { get; set; }//not in DB
         public int WinRate { get { try { return GamesWon / GamesPlayed * 100; } catch { return 0; }; } }//not in DB
         //public int IsCurrentUser { get { return IsCurrentUser; } set { if (IsCurrentUser == 1) { IsCurrentUser = 0; } else { IsCurrentUser = 1; } } }

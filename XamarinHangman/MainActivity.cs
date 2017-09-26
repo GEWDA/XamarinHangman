@@ -11,37 +11,9 @@ using Android.Views;
 
 namespace XamarinHangman
 {
-
-    //public class CustListener : Android.Widget.AdapterView.IOnItemSelectedListener
-    //{
-    //    public void OnItemSelected(AdapterView parent, View item, int position, long l)//might need AdapterView<Type>
-    //    {
-
-    //    }
-    //    public void OnNothingSelected(AdapterView parent)//might need AdapterView<Type>
-    //    {
-
-    //    }
-
-    //}
-
     [Activity(Label = "Hangman", MainLauncher = true, Icon = "@drawable/bomb9",Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {
-        public class MySpinner:Spinner
-        {
-            AdapterView.IOnItemSelectedListener listener;
-            public MySpinner(Context context, IAttributeSet attrs):base(context,attrs){ }
-            public override void SetSelection(int position)
-            {
-                base.SetSelection(position);
-                if (listener != null)
-                { listener.OnItemSelected(this, this.SelectedView, position, 0); }
-            }
-            public void SetOnItemSelectedEvenWhenUnchangedListener(IOnItemSelectedListener theListener)//WHY IS THIS NOT IN BY DEFAULT???
-            { this.listener = theListener; }
-        }
-
         private LinearLayout mainMenu;
         private LinearLayout nukeMenu;
         private LinearLayout addMenu;
@@ -97,9 +69,7 @@ namespace XamarinHangman
 
         private void InitializeAllTheThings()
         {
-            mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
-            spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
-            mainTitle.Typeface = spywareFont;
+            //rather than using seperate activities, i just have several fullscreen layouts with their children which i swap between for the main menu items
             mainMenu = FindViewById<LinearLayout>(Resource.Id.MainMenuLayout);
             nukeMenu = FindViewById<LinearLayout>(Resource.Id.NukeMenuLayout);
             addMenu = FindViewById<LinearLayout>(Resource.Id.AddUserLayout);
@@ -108,12 +78,13 @@ namespace XamarinHangman
             mainMenu.Activated = true;
             mainMenu.BringToFront();
 
-
+            mainTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
+            spywareFont = Typeface.CreateFromAsset(Assets, "fonts/spyware.ttf");
+            mainTitle.Typeface = spywareFont;
             usersSpinner = FindViewById<Spinner>(Resource.Id.invisibleSpinner);
-            //usersSpinner = (MySpinner)aSpinner;
-            //UpdateSpinner();
             usersSpinner.ItemSelected += UsersSpinner_ItemSelected;
 
+            //Main buttons
             btnPlay = FindViewById<ImageButton>(Resource.Id.imageButtonPlay);
             btnPlay.Click += BtnPlay_Click;
             btnScores = FindViewById<ImageButton>(Resource.Id.imageButtonScores);
@@ -123,6 +94,7 @@ namespace XamarinHangman
             btnPlayers = FindViewById<ImageButton>(Resource.Id.imageButtonPlayers);
             btnPlayers.Click += BtnPlayers_Click;
 
+            //nukeMenu children
             nukeCancel = FindViewById<Button>(Resource.Id.buttonAbort);
             nukeCancel.Typeface = spywareFont;
             nukeCancel.Click += NukeDB;
@@ -135,10 +107,10 @@ namespace XamarinHangman
             btnNuke.Click += NukeDB;
         }
 
-        private void UpdateCurrentUser(object sender, View.FocusChangeEventArgs e)
+        private void UpdateCurrentUser(object sender, View.FocusChangeEventArgs e)//Currently unimplemented
         {
             Log.Info("myDebug", "UpdateCurrentUser triggered!");
-            //if (true)
+            //if (true)//placeholder value for if the New User record is selected
             //{
             //    addMenu.Activated = true;
             //    nukeMenu.Activated = false;
@@ -165,25 +137,22 @@ namespace XamarinHangman
 
         private void UpdateSpinner()
         {
-            userArrayAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, nameArray);//fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  fix me  
+            userArrayAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, nameArray);
             userArrayAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            //set background colour, and text colour
             usersSpinner.Adapter = userArrayAdapter;
-            //usersSpinner.Click += UpdateCurrentUser;//Java.Lang.RuntimeException: Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead
-            //usersSpinner.ItemClick += UpdateCurrentUser;//Java.Lang.RuntimeException: setOnItemClickListener cannot be used with a spinner.
         }
 
-        private void UsersSpinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Log.Info("myDebug", "IT WORKS");
+        private void UsersSpinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)  //This event is incorrectly firing, even according to its own documentation.
+        {                                                                                           // However i have simply utilized this inconsistency in a way where is doesn't matter, rather than waiting for a fix
+            Log.Info("myDebug", "Spinner Item Selected");
             Toast.MakeText(this,"This feature is currently unavailable",ToastLength.Long).Show();
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            if (!(usersSpinner.SelectedItem is null) && usersSpinner.SelectedItem.ToString()!="New User...")
+            if (!(usersSpinner.SelectedItem is null) && usersSpinner.SelectedItem.ToString()!="New User...")//Currently impossible to be true
             {
-                Log.Info("myDebug", "Works");
+                Log.Info("myDebug", "Selected User is "+usersSpinner.SelectedItem.ToString());
             }
             Intent StartGame = new Intent(this, typeof(GameActivity));
             StartActivity(StartGame);
@@ -193,7 +162,7 @@ namespace XamarinHangman
         private void BtnScores_Click(object sender, EventArgs e)
         {
             Toast.MakeText(this, "The highscores feature is currently unavailable,\nlaunching game instead...", ToastLength.Long).Show();
-            btnPlay.PerformClick();//FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME  FIX ME
+            btnPlay.PerformClick();//Temporary fix
         }
         private void BtnSettings_Click(object sender, EventArgs e)
         {
@@ -212,7 +181,7 @@ namespace XamarinHangman
 
         //~DB CALLS/RESULTS
 #region ~DB CALLS/RESULTS
-        private void GetUsersNames(System.Threading.Tasks.Task<System.Collections.Generic.List<Users>> a)
+        private void GetUsersNames(System.Threading.Tasks.Task<System.Collections.Generic.List<Users>> a)//Although database integration feature is incomplete, this method functions correctly
         {
             Log.Info("MyDebug", "Found " + nameArray.Length.ToString() + " users");
             if (nameArray.Length != a.Result.Count)
@@ -227,7 +196,7 @@ namespace XamarinHangman
             }
             usersSpinner.PerformClick();
         }
-        private void NukeDB(object sender, EventArgs e)
+        private void NukeDB(object sender, EventArgs e)//Although database integration feature is incomplete, this method functions correctly
         {
             if(sender==btnNuke)
             {

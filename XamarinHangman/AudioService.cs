@@ -18,6 +18,14 @@ namespace XamarinHangman
     [Service(Exported=false)]
     public class AudioService : Service
     {
+        private class SongReseter : Java.Lang.Object, MediaPlayer.IOnCompletionListener
+        {
+            public void OnCompletion(MediaPlayer mp)
+            {
+                mp.Start();
+            }
+        }
+
         private int song;//stores an id, so technically is an int
         private MediaPlayer player;
         public override IBinder OnBind(Intent intent)
@@ -35,14 +43,6 @@ namespace XamarinHangman
             Play();
         }
 
-        public override void UnbindService(IServiceConnection conn)
-        {
-            player.Pause();
-            player.Stop();
-            player.Release();
-            base.UnbindService(conn);
-            StopSelf();
-        }
         public override void OnDestroy()
         {
             player.Pause();
@@ -53,6 +53,7 @@ namespace XamarinHangman
         private void Play()
         {
             player = MediaPlayer.Create(this,song);
+            player.SetOnCompletionListener(new SongReseter());
             player.Start();
         }
     }
