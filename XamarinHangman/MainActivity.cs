@@ -150,9 +150,10 @@ namespace XamarinHangman
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            if (!(usersSpinner.SelectedItem is null) && usersSpinner.SelectedItem.ToString()!="New User...")//Currently impossible to be true
+            if (!(usersSpinner.SelectedItem is null))
             {
                 Log.Info("myDebug", "Selected User is "+usersSpinner.SelectedItem.ToString());
+                //UpdateCurrentUser(usersSpinner.SelectedItem, new View.FocusChangeEventArgs(false));//WOULD update current user upon pressing play
             }
             Intent StartGame = new Intent(this, typeof(GameActivity));
             StartActivity(StartGame);
